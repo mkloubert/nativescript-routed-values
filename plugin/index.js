@@ -45,31 +45,31 @@ exports.VALUE_PROPERTY = 'value';
 })(exports.RouterStradegy || (exports.RouterStradegy = {}));
 var RouterStradegy = exports.RouterStradegy;
 /**
- * List of values that represent a traffic light.
+ * List of values that represent the state of a traffic light.
  */
-(function (TraficLight) {
+(function (TraficLightState) {
     /**
      * None (gray)
      **/
-    TraficLight[TraficLight["None"] = 0] = "None";
+    TraficLightState[TraficLightState["None"] = 0] = "None";
     /**
      * OK (green)
      **/
-    TraficLight[TraficLight["OK"] = 1] = "OK";
+    TraficLightState[TraficLightState["OK"] = 1] = "OK";
     /**
      * Warning (yellow)
      **/
-    TraficLight[TraficLight["Warning"] = 2] = "Warning";
+    TraficLightState[TraficLightState["Warning"] = 2] = "Warning";
     /**
      * Error (red)
      **/
-    TraficLight[TraficLight["Error"] = 3] = "Error";
+    TraficLightState[TraficLightState["Error"] = 3] = "Error";
     /**
      * Fatal error (yellow / red)
      **/
-    TraficLight[TraficLight["FatalError"] = 4] = "FatalError";
-})(exports.TraficLight || (exports.TraficLight = {}));
-var TraficLight = exports.TraficLight;
+    TraficLightState[TraficLightState["FatalError"] = 4] = "FatalError";
+})(exports.TraficLightState || (exports.TraficLightState = {}));
+var TraficLightState = exports.TraficLightState;
 /**
  * A routed value.
  */
@@ -373,12 +373,12 @@ exports.RoutedNumber = RoutedNumber;
 /**
  * A routed traffic light.
  */
-var TrafficState = (function (_super) {
-    __extends(TrafficState, _super);
-    function TrafficState() {
+var TrafficLight = (function (_super) {
+    __extends(TrafficLight, _super);
+    function TrafficLight() {
         _super.apply(this, arguments);
     }
-    return TrafficState;
+    return TrafficLight;
 }(RoutedValue));
-exports.TrafficState = TrafficState;
+exports.TrafficLight = TrafficLight;
 //# sourceMappingURL=index.js.map

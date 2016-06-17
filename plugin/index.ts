@@ -48,9 +48,9 @@ export enum RouterStradegy {
 }
 
 /**
- * List of values that represent a traffic light.
+ * List of values that represent the state of a traffic light.
  */
-export enum TraficLight {
+export enum TraficLightState {
     /**
      * None (gray)
      **/
@@ -413,5 +413,5 @@ export class RoutedNumber extends RoutedValue<number> {
 /**
  * A routed traffic light.
  */
-export class TrafficState extends RoutedValue<TraficLight> {
+export class TrafficLight extends RoutedValue<TraficLightState> {
 }
