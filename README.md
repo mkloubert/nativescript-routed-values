@@ -86,4 +86,14 @@ The effect is that `A1` will raise a change event for the `value` property of it
 
 `B1` and `B2` will also raise change events for their children.
 
+## Example
+
+### Data binding
+
+The graph above is realized as [demo app](https://github.com/mkloubert/nativescript-routed-values/tree/master/demo).
+
+The values of the left side are the routed values provides by `value` property.
+
+The values of the right side are the "real" / inner values provides by `innerValue` property.
+
 
