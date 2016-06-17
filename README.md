@@ -179,7 +179,7 @@ enum TraficLightState {
 }
 ```
 
-### RoutedValue<T>
+### RoutedValue&lt;T&gt;
 
 This is the generic version of a routed value and can be used for all comparable value types, especially for enums:
 
