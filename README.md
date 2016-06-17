@@ -120,8 +120,10 @@ var A1 = new RoutedNumber(RouterStradegy.Descending);
 
 The graph above is realized as [demo app](https://github.com/mkloubert/nativescript-routed-values/tree/master/demo).
 
-<img src="https://raw.githubusercontent.com/mkloubert/nativescript-routed-values/master/demo.gif" width="480">
+<img src="https://raw.githubusercontent.com/mkloubert/nativescript-routed-values/master/demo.gif" width="320">
 
 The values of the left side are the routed values provides by `value` property.
 
 The values of the right side are the "real" / inner values provides by `innerValue` property.
+
+To increase a value simply tap on it.
