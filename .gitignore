@@ -3,3 +3,4 @@
 /plugin/*.map
 /demo/app/*.map
 /demo/.vscode
+/pushall.sh
