@@ -1,0 +1,112 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <Page.actionBar>
+    <ActionBar title="nativescript-routed-values Demo">
+    </ActionBar>
+  </Page.actionBar>
+
+  <GridLayout rows="*,*,*,*,*,*,*,*" columns="*,*,*">
+    <!-- A1 -->
+    <Label row="3" col="0" horizontalAlignment="center" tap="{{ onTapA1 }}">
+      <Label.formattedText>
+        <FormattedString>
+          <FormattedString.spans>
+            <Span text="{{ A1.value }}" />
+            <Span text=" (" />
+            <Span text="{{ A1.innerValue }}" />
+            <Span text=")" />
+          </FormattedString.spans>
+        </FormattedString>
+      </Label.formattedText>
+    </Label>
+
+    <!-- B1 -->
+    <Label row="1" col="1" horizontalAlignment="center" tap="{{ onTapB1 }}">
+      <Label.formattedText>
+        <FormattedString>
+          <FormattedString.spans>
+            <Span text="{{ B1.value }}" />
+            <Span text=" (" />
+            <Span text="{{ B1.innerValue }}" />
+            <Span text=")" />
+          </FormattedString.spans>
+        </FormattedString>
+      </Label.formattedText>
+    </Label>
+    <!-- B2 -->
+    <Label row="5" col="1" horizontalAlignment="center" tap="{{ onTapB2 }}">
+      <Label.formattedText>
+        <FormattedString>
+          <FormattedString.spans>
+            <Span text="{{ B2.value }}" />
+            <Span text=" (" />
+            <Span text="{{ B2.innerValue }}" />
+            <Span text=")" />
+          </FormattedString.spans>
+        </FormattedString>
+      </Label.formattedText>
+    </Label>
+
+    <!-- C1 -->
+    <Label row="0" col="2" horizontalAlignment="center">
+      <Label.formattedText>
+        <FormattedString>
+          <FormattedString.spans>
+            <Span text="{{ C1.value }}" />
+            <Span text=" (" />
+            <Span text="{{ C1.innerValue }}" />
+            <Span text=")" />
+          </FormattedString.spans>
+        </FormattedString>
+      </Label.formattedText>
+    </Label>
+    <!-- C2 -->
+    <Label row="2" col="2" horizontalAlignment="center">
+      <Label.formattedText>
+        <FormattedString>
+          <FormattedString.spans>
+            <Span text="{{ C2.value }}" />
+            <Span text=" (" />
+            <Span text="{{ C2.innerValue }}" />
+            <Span text=")" />
+          </FormattedString.spans>
+        </FormattedString>
+      </Label.formattedText>
+    </Label>
+    <!-- C3 -->
+    <Label row="4" col="2" horizontalAlignment="center">
+      <Label.formattedText>
+        <FormattedString>
+          <FormattedString.spans>
+            <Span text="{{ C3.value }}" />
+            <Span text=" (" />
+            <Span text="{{ C3.innerValue }}" />
+            <Span text=")" />
+          </FormattedString.spans>
+        </FormattedString>
+      </Label.formattedText>
+    </Label>
+    <!-- C4 -->
+    <Label row="6" col="2" horizontalAlignment="center">
+      <Label.formattedText>
+        <FormattedString>
+          <FormattedString.spans>
+            <Span text="{{ C4.value }}" />
+            <Span text=" (" />
+            <Span text="{{ C4.innerValue }}" />
+            <Span text=")" />
+          </FormattedString.spans>
+        </FormattedString>
+      </Label.formattedText>
+    </Label>
+
+    <Button horizontalAlignment="center"
+            tap="{{ resetA }}"
+            row="7" col="0" text="Reset" />
+    <Button horizontalAlignment="center"
+            tap="{{ resetB }}"
+            row="7" col="1" text="Reset" />
+    <Button horizontalAlignment="center"
+            tap="{{ resetC }}"
+            row="7" col="2" text="Reset" />
+  </GridLayout>
+</Page>
