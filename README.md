@@ -135,7 +135,7 @@ To increase a value simply tap on it.
 This represents a "traffic light" and uses the following enum:
 
 ```typescript
-TraficLightState {
+enum TraficLightState {
     /**
      * None (gray)
      **/
