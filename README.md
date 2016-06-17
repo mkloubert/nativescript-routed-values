@@ -28,7 +28,7 @@ inside your app project to install the module.
 
 The idea is that you can build graphs of values.
 
-You define one or more root element that can have one or more child that also can handle one or more child.
+You define one or more root element that can have one or more child that also can handle one or more child and so on.
 
 For example:
 
