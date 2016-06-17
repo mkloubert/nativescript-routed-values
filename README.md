@@ -86,9 +86,9 @@ The effect is that `A1` will raise a change event for the `value` property of it
 
 `B1` and `B2` will also raise change events for their children.
 
-### Lowest values wins
+### Other direction
 
-You also can use the "other direction.
+You also can use the "other" direction, what means that the lower value "wins".
 
 In that case you have to set `Descending` value of the `RouterStradegy` enum
 
