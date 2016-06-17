@@ -5,6 +5,8 @@
 
 A [NativeScript](https://nativescript.org/) module for implementing routed value graphs.
 
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4DLW7GWENSTNN)
+
 ## License
 
 [MIT license](https://raw.githubusercontent.com/mkloubert/nativescript-routed-values/master/LICENSE)
