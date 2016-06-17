@@ -176,5 +176,6 @@ enum MyEnum {
     Value3 = 3,
 }
 
-var v = new RoutedValue<MyEnum>(RouterStradegy.Descending);
+var v = new RoutedValue<MyEnum>();
+v.innerValue = MyEnum.Value1;
 ```
