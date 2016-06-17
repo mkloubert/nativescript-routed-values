@@ -329,9 +329,7 @@ export class RoutedValue<T> extends Observable.Observable {
         for (var i = 0; i < this._children.length; i++) {
             var c = this._children[i];
 
-            if (c.shouldTakeParentValue(thisValue)) {
-                c.raiseValueChanged();
-            }
+            c.raiseValueChanged();
         }
     }
 

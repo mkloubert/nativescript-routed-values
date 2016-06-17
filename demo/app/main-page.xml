@@ -108,12 +108,12 @@
 
     <Button horizontalAlignment="center"
             tap="{{ resetA }}"
-            row="7" col="0" text="Reset" />
+            row="7" col="0" text="Reset A*" />
     <Button horizontalAlignment="center"
             tap="{{ resetB }}"
-            row="7" col="1" text="Reset" />
+            row="7" col="1" text="Reset B*" />
     <Button horizontalAlignment="center"
             tap="{{ resetC }}"
-            row="7" col="2" text="Reset" />
+            row="7" col="2" text="Reset C*" />
   </GridLayout>
 </Page>
