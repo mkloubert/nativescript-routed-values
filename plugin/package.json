@@ -1,6 +1,6 @@
 {
   "name": "nativescript-routed-values",
-  "description": "NativeScript module for implementing routed values graphs.",
+  "description": "NativeScript module for implementing routed value graphs.",
   "version": "1.0.0",
   "nativescript": {
     "platforms": {

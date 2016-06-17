@@ -3,7 +3,7 @@
 
 # NativeScript Routed Values
 
-A [NativeScript](https://nativescript.org/) module for implementing routed values graphs.
+A [NativeScript](https://nativescript.org/) module for implementing routed value graphs.
 
 ## License
 
