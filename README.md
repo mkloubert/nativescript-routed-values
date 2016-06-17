@@ -49,24 +49,24 @@ Here you have the root element `A1` that has the children `B1` and `B2`.
 The code of that graph looks like this:
 
 ```typescript
-import RoutedValues = require('nativescript-routed-values');
+import {RoutedNumber} from "nativescript-routed-values";
 
 // the root element
-var A1 = new RoutedValues.RoutedNumber();
+var A1 = new RoutedNumber();
 
 // the children of A1
-var B1 = new RoutedValues.RoutedNumber();
-var B2 = new RoutedValues.RoutedNumber();
+var B1 = new RoutedNumber();
+var B2 = new RoutedNumber();
 A1.addChildren(B1, B2);
 
 // the children of B1
-var C1 = new RoutedValues.RoutedNumber();
-var C2 = new RoutedValues.RoutedNumber();
+var C1 = new RoutedNumber();
+var C2 = new RoutedNumber();
 B1.addChildren(C1, C2);
 
 // the children of B2
-var C3 = new RoutedValues.RoutedNumber();
-var C4 = new RoutedValues.RoutedNumber();
+var C3 = new RoutedNumber();
+var C4 = new RoutedNumber();
 B2.addChildren(C3, C4);
 ```
 
@@ -85,6 +85,34 @@ A1.innerValue = 5979;
 The effect is that `A1` will raise a change event for the `value` property of itself and their children `B1` and `B2`.
 
 `B1` and `B2` will also raise change events for their children.
+
+### Lowest values wins
+
+You also can use the "other direction.
+
+In that case you have to set `Descending` value of the `RouterStradegy` enum
+
+```typescript
+enum RouterStradegy {
+    /**
+     * Take the value from parent (if greater)
+     */
+    Ascending,
+
+    /**
+     * Take the value from parent (if smaller)
+     */
+    Descending,
+}
+```
+
+in the constructor of a routed value.
+
+```typescript
+import {RoutedNumber, RouterStradegy} from "nativescript-routed-values";
+
+var A1 = new RoutedNumber(RouterStradegy.Descending);
+```
 
 ## Example
 
