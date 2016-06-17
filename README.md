@@ -128,6 +128,22 @@ The values of the right side are the "real" / inner values provided by `innerVal
 
 To increase a value simply tap on it.
 
+## Events
+
+### onValueChanged
+
+```typescript
+import {RoutedNumber} from "nativescript-routed-values";
+
+var A1 = new RoutedNumber();
+A1.name = 'A1';
+A1.onValueChanged((newValue, obj) => {
+    console.log("New value of '" + obj.name + "' is: " + newValue);
+});
+
+A1.innerValue = 5979;
+```
+
 ## Classes
 
 ### TrafficLight
