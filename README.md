@@ -127,3 +127,54 @@ The values of the left side are the routed values provides by `value` property.
 The values of the right side are the "real" / inner values provides by `innerValue` property.
 
 To increase a value simply tap on it.
+
+## Classes
+
+### TrafficLight
+
+This represents a "traffic light" and uses the following enum:
+
+```typescript
+TraficLightState {
+    /**
+     * None (gray)
+     **/
+    None = 0,
+
+    /**
+     * OK (green)
+     **/
+    OK = 1,
+
+    /**
+     * Warning (yellow)
+     **/
+    Warning = 2,
+
+    /**
+     * Error (red)
+     **/
+    Error = 3,
+
+    /**
+     * Fatal error (yellow / red)
+     **/
+    FatalError = 4,
+}
+```
+
+### RoutedValue<T>
+
+This is the generic version of a routed value and can be used for all comparable value types, especially for enums:
+
+```typescript
+import {RoutedValue} from "nativescript-routed-values";
+
+enum MyEnum {
+    Value1 = 1,
+    Value2 = 2,
+    Value3 = 3,
+}
+
+var v = new RoutedValue<MyEnum>(RouterStradegy.Descending);
+```
