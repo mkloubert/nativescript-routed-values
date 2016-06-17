@@ -122,9 +122,9 @@ The graph above is realized as [demo app](https://github.com/mkloubert/nativescr
 
 <img src="https://raw.githubusercontent.com/mkloubert/nativescript-routed-values/master/demo.gif" width="320">
 
-The values of the left side are the routed values provides by `value` property.
+The values of the left side are the routed values provided by `value` property.
 
-The values of the right side are the "real" / inner values provides by `innerValue` property.
+The values of the right side are the "real" / inner values provided by `innerValue` property.
 
 To increase a value simply tap on it.
 
