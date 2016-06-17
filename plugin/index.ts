@@ -93,6 +93,7 @@ export class RoutedValue<T> extends Observable.Observable {
      * Stores the "real" inner value of that instance.
      */
     protected _innerValue: T;
+    private _name: string;
     /**
      * Stores the parents.
      */
@@ -101,6 +102,7 @@ export class RoutedValue<T> extends Observable.Observable {
      * Stores the stradegy.
      */
     protected _stradegy: RouterStradegy;
+    private _tag: any;
 
     /**
      * Initializes a new instance of that class.
@@ -147,6 +149,8 @@ export class RoutedValue<T> extends Observable.Observable {
      * @chainable
      * 
      * @param {Array} children The children to add.
+     * 
+     * @throws A child object is already a parent.
      */
     public addChildArray(children: RoutedValue<T>[]): RoutedValue<T> {
         if (TypeUtils.isNullOrUndefined(children)) {
@@ -177,20 +181,22 @@ export class RoutedValue<T> extends Observable.Observable {
      * Adds a parent item.
      * 
      * @param {RoutedValue} parent The parent item to add.
-     * @param {Boolean} addChild Also add that instance as child item for 'parent' or not. 
+     * @param {Boolean} addChild Also add that instance as child item for 'parent' or not.
+     * 
+     * @throws Parent object is already a child.
      */
     protected addParentItem(parent: RoutedValue<T>, addChild: boolean) {
         var me = this;
         
-        for (var i = 0; i < this._children.length; i++) {
-            var c = this._children[i];
+        for (var i = 0; i < me._children.length; i++) {
+            var c = me._children[i];
             if (<any>c === parent) {
                 throw "Parent object is already a child!";
             }
         }
 
         if (addChild) {
-            parent.addChildren(this);
+            parent.addChildren(me);
         }
 
         parent.on(Observable.Observable.propertyChangeEvent,
@@ -206,12 +212,12 @@ export class RoutedValue<T> extends Observable.Observable {
                       }
                   });
 
-        var oldValue = this.value;
+        var oldValue = me.value;
 
-        this._parents.push(parent);
+        me._parents.push(parent);
 
-        if (this.shouldTakeParentValue(parent.value, oldValue)) {
-            this.raiseValueChanged();
+        if (me.shouldTakeParentValue(parent.value, oldValue)) {
+            me.raiseValueChanged();
         }
     }
 
@@ -274,17 +280,58 @@ export class RoutedValue<T> extends Observable.Observable {
     /**
      * Gets or sets the name of that instance.
      */
-    public name: string;
+    public get name(): string {
+        return this._name;
+    }
+    public set name(newValue: string) {
+        var oldValue = this._name;
+        this._name = newValue;
+
+        if (newValue !== oldValue) {
+            this.notifyPropertyChange('name', newValue);
+        }
+    }
+
+    /**
+     * Hooks a changed event listener for 'value' property.
+     * 
+     * @param {Function} listener The listener to register.
+     * 
+     * @return {Function} The underlying 'hook' function that has been used for 'on' method.
+     */
+    public onValueChanged(listener: (newValue: T, object: RoutedValue<T>) => void): (e: Observable.PropertyChangeData) => void {
+        if (TypeUtils.isNullOrUndefined(listener)) {
+            return;
+        }
+
+        var propertyChange = (e: Observable.PropertyChangeData) => { 
+            switch (e.propertyName) {
+                case VALUE_PROPERTY:
+                    listener(e.value, <RoutedValue<T>>e.object);
+                    break;
+            }
+        };
+
+        this.on(Observable.Observable.propertyChangeEvent,
+                propertyChange);
+
+        return propertyChange;
+    }
 
     /**
      * Raises the property change event for the value property.
      */
     public raiseValueChanged() {
-        this.notifyPropertyChange(VALUE_PROPERTY, this.value);
+        var thisValue = this.value;
+
+        this.notifyPropertyChange(VALUE_PROPERTY, thisValue);
 
         for (var i = 0; i < this._children.length; i++) {
-            this._children[i]
-                .raiseValueChanged();
+            var c = this._children[i];
+
+            if (c.shouldTakeParentValue(thisValue)) {
+                c.raiseValueChanged();
+            }
         }
     }
 
@@ -320,9 +367,19 @@ export class RoutedValue<T> extends Observable.Observable {
     }
 
     /**
-     * Gets or sets a value that should be linked with that instance.
+     * Gets or sets an object / value that should be linked with that instance.
      */
-    public tag: any;
+    public get tag(): any {
+        return this._tag;
+    }
+    public set tag(newValue: any) {
+        var oldValue = this._tag;
+        this._tag = newValue;
+
+        if (newValue !== oldValue) {
+            this.notifyPropertyChange('tag', newValue);
+        }
+    }
 
     /**
      * Gets the routed value.

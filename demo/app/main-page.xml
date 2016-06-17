@@ -10,6 +10,7 @@
       <Label.formattedText>
         <FormattedString>
           <FormattedString.spans>
+            <Span text="A1 = " />
             <Span text="{{ A1.value }}" />
             <Span text=" (" />
             <Span text="{{ A1.innerValue }}" />
@@ -24,6 +25,7 @@
       <Label.formattedText>
         <FormattedString>
           <FormattedString.spans>
+            <Span text="B1 = " />
             <Span text="{{ B1.value }}" />
             <Span text=" (" />
             <Span text="{{ B1.innerValue }}" />
@@ -37,6 +39,7 @@
       <Label.formattedText>
         <FormattedString>
           <FormattedString.spans>
+            <Span text="B2 = " />
             <Span text="{{ B2.value }}" />
             <Span text=" (" />
             <Span text="{{ B2.innerValue }}" />
@@ -51,6 +54,7 @@
       <Label.formattedText>
         <FormattedString>
           <FormattedString.spans>
+            <Span text="C1 = " />
             <Span text="{{ C1.value }}" />
             <Span text=" (" />
             <Span text="{{ C1.innerValue }}" />
@@ -64,6 +68,7 @@
       <Label.formattedText>
         <FormattedString>
           <FormattedString.spans>
+            <Span text="C2 = " />
             <Span text="{{ C2.value }}" />
             <Span text=" (" />
             <Span text="{{ C2.innerValue }}" />
@@ -77,6 +82,7 @@
       <Label.formattedText>
         <FormattedString>
           <FormattedString.spans>
+            <Span text="C3 = " />
             <Span text="{{ C3.value }}" />
             <Span text=" (" />
             <Span text="{{ C3.innerValue }}" />
@@ -90,6 +96,7 @@
       <Label.formattedText>
         <FormattedString>
           <FormattedString.spans>
+            <Span text="C4 = " />
             <Span text="{{ C4.value }}" />
             <Span text=" (" />
             <Span text="{{ C4.innerValue }}" />

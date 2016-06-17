@@ -126,6 +126,8 @@ var RoutedValue = (function (_super) {
      * @chainable
      *
      * @param {Array} children The children to add.
+     *
+     * @throws A child object is already a parent.
      */
     RoutedValue.prototype.addChildArray = function (children) {
         if (TypeUtils.isNullOrUndefined(children)) {
@@ -152,17 +154,19 @@ var RoutedValue = (function (_super) {
      *
      * @param {RoutedValue} parent The parent item to add.
      * @param {Boolean} addChild Also add that instance as child item for 'parent' or not.
+     *
+     * @throws Parent object is already a child.
      */
     RoutedValue.prototype.addParentItem = function (parent, addChild) {
         var me = this;
-        for (var i = 0; i < this._children.length; i++) {
-            var c = this._children[i];
+        for (var i = 0; i < me._children.length; i++) {
+            var c = me._children[i];
             if (c === parent) {
                 throw "Parent object is already a child!";
             }
         }
         if (addChild) {
-            parent.addChildren(this);
+            parent.addChildren(me);
         }
         parent.on(Observable.Observable.propertyChangeEvent, function (e) {
             var sender = e.object;
@@ -174,10 +178,10 @@ var RoutedValue = (function (_super) {
                     break;
             }
         });
-        var oldValue = this.value;
-        this._parents.push(parent);
-        if (this.shouldTakeParentValue(parent.value, oldValue)) {
-            this.raiseValueChanged();
+        var oldValue = me.value;
+        me._parents.push(parent);
+        if (me.shouldTakeParentValue(parent.value, oldValue)) {
+            me.raiseValueChanged();
         }
     };
     /**
@@ -235,14 +239,55 @@ var RoutedValue = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(RoutedValue.prototype, "name", {
+        /**
+         * Gets or sets the name of that instance.
+         */
+        get: function () {
+            return this._name;
+        },
+        set: function (newValue) {
+            var oldValue = this._name;
+            this._name = newValue;
+            if (newValue !== oldValue) {
+                this.notifyPropertyChange('name', newValue);
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    /**
+     * Hooks a changed event listener for 'value' property.
+     *
+     * @param {Function} listener The listener to register.
+     *
+     * @return {Function} The underlying 'hook' function that has been used for 'on' method.
+     */
+    RoutedValue.prototype.onValueChanged = function (listener) {
+        if (TypeUtils.isNullOrUndefined(listener)) {
+            return;
+        }
+        var propertyChange = function (e) {
+            switch (e.propertyName) {
+                case exports.VALUE_PROPERTY:
+                    listener(e.value, e.object);
+                    break;
+            }
+        };
+        this.on(Observable.Observable.propertyChangeEvent, propertyChange);
+        return propertyChange;
+    };
     /**
      * Raises the property change event for the value property.
      */
     RoutedValue.prototype.raiseValueChanged = function () {
-        this.notifyPropertyChange(exports.VALUE_PROPERTY, this.value);
+        var thisValue = this.value;
+        this.notifyPropertyChange(exports.VALUE_PROPERTY, thisValue);
         for (var i = 0; i < this._children.length; i++) {
-            this._children[i]
-                .raiseValueChanged();
+            var c = this._children[i];
+            if (c.shouldTakeParentValue(thisValue)) {
+                c.raiseValueChanged();
+            }
         }
     };
     /**
@@ -272,6 +317,23 @@ var RoutedValue = (function (_super) {
          */
         get: function () {
             return this._stradegy;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(RoutedValue.prototype, "tag", {
+        /**
+         * Gets or sets an object / value that should be linked with that instance.
+         */
+        get: function () {
+            return this._tag;
+        },
+        set: function (newValue) {
+            var oldValue = this._tag;
+            this._tag = newValue;
+            if (newValue !== oldValue) {
+                this.notifyPropertyChange('tag', newValue);
+            }
         },
         enumerable: true,
         configurable: true
