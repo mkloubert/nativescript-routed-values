@@ -7,6 +7,10 @@ A [NativeScript](https://nativescript.org/) module for implementing routed value
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4DLW7GWENSTNN)
 
+## NativeScript Toolbox
+
+This module is part of [nativescript-toolbox](https://github.com/mkloubert/nativescript-toolbox).
+
 ## License
 
 [MIT license](https://raw.githubusercontent.com/mkloubert/nativescript-routed-values/master/LICENSE)
