@@ -1,7 +1,7 @@
 {
   "name": "nativescript-routed-values",
   "description": "NativeScript module for implementing routed value graphs.",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "nativescript": {
     "platforms": {
       "android": "1.1.0",
